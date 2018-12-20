@@ -19,6 +19,7 @@ public class AesGcmEncryption {
         // Please note that reusing IVs is dangerous!!! 
         cipher.init(Cipher.ENCRYPT_MODE, key, new GCMParameterSpec(128, ivBytes));
         byte[] iv = cipher.getIV();
+        cipher.updateAAD(new byte[20]);
         byte[] ciphertext = cipher.doFinal(data.getBytes());
         System.out.println("IV:            " + Util.bytesToHexString(iv));
         System.out.println("Cipher + GMAC: " + Util.bytesToHexString(ciphertext));
