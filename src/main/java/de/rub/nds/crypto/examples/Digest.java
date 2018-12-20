@@ -5,15 +5,17 @@ import java.security.MessageDigest;
 
 public class Digest {
     
-    static String data = "abcdef";
+    static String dataPart1 = "abcdef";
+    static String dataPart2 = "ghijkl";
+    static String dataPart3 = "mn";
     
     public static void main(String[] args) throws Exception {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         // you can invoke the update function several times with different data
-        md.update(data.getBytes());
-        md.update(data.getBytes());
+        md.update(dataPart1.getBytes());
+        md.update(dataPart2.getBytes());
         // then you finalize and compute the resulting hash
-        byte[] result = md.digest(data.getBytes());
+        byte[] result = md.digest(dataPart3.getBytes());
         System.out.println("Hash / Digest: " + Util.bytesToHexString(result));
     }
 }
