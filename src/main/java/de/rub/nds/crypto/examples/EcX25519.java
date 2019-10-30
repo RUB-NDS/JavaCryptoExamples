@@ -22,6 +22,15 @@ public class EcX25519 {
         
         //multipy the privateKey with the base of the X22519 curve and save the result the publicKey
         X25519.scalarMultBase(privateKey, 0, publicKey, 0);
-        System.out.println("Public key:           " + Util.bytesToHexString(publicKey)); 
+        System.out.println("Public key:           " + Util.bytesToHexString(publicKey));
+        
+        
+        
+        //multipy two factors as points on the X22519 curve and save the result in the product
+        byte[] factor1 = Util.hexStringToByteArray("00112233445566778899AABBCCDDEEFF00112233445566778899AABBCCDDEEFF");
+        byte[] factor2 = Util.hexStringToByteArray("0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF");
+        byte[] product = new byte[32];
+        X25519.scalarMult(factor1, 0, factor2, 0, product, 0);
+        System.out.println("product:           " + Util.bytesToHexString(product));
     }
 }
