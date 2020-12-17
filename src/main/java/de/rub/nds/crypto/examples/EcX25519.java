@@ -14,13 +14,13 @@ public class EcX25519 {
         secureRandom.nextBytes(privateKey);
         System.out.println("Private key:          " + Util.bytesToHexString(privateKey));
         
-        // create a array for the public key
+        // create an array for the public key
         byte[] publicKey = new byte[32];
         
         //init the X25519 class
         X25519.precompute();
         
-        //multipy the privateKey with the base of the X22519 curve and save the result the publicKey
+        //multipy the private key with the base of the X22519 curve and save the result in the public key
         X25519.scalarMultBase(privateKey, 0, publicKey, 0);
         System.out.println("Public key:           " + Util.bytesToHexString(publicKey));
         
