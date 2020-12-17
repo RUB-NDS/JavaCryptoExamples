@@ -27,6 +27,7 @@ public class AesGcmEncryption {
         System.out.println("Cipher + GMAC: " + Util.bytesToHexString(ciphertext));
         
         cipher.init(Cipher.DECRYPT_MODE, key, new GCMParameterSpec(128, ivBytes));
+        cipher.updateAAD(aad);
         byte[] plaintext = cipher.doFinal(ciphertext);
         System.out.println("Plain:         " + new String (plaintext));
         System.out.println("Plain in hex   " + Util.bytesToHexString(plaintext));
